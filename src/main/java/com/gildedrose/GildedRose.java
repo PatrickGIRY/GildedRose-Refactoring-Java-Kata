@@ -17,7 +17,7 @@ class GildedRose {
                     }
                 }
             } else {
-                if (items[i].quality < 50) {
+                if (isNotMaxQuality(items[i])) {
                     items[i].quality = items[i].quality + 1;
 
                     if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -53,9 +53,13 @@ class GildedRose {
     }
 
     private void increaseQualityIfPossible(Item item) {
-        if (item.quality < 50) {
+        if (isNotMaxQuality(item)) {
             item.quality = item.quality + 1;
         }
+    }
+
+    private boolean isNotMaxQuality(Item item) {
+        return item.quality < 50;
     }
 
     private void descreaseQualityIfPossible(Item item) {
