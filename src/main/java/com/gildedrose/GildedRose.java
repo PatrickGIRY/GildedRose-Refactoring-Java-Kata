@@ -60,7 +60,7 @@ class GildedRose {
 
     private void descreaseQualityIfPossible(Item item) {
         if (item.quality > 0) {
-            item.quality = item.quality - 1;
+            item.quality--;
         }
     }
 }
