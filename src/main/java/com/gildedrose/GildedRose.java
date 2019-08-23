@@ -13,6 +13,9 @@ class GildedRose {
                 handleStandardItem(item);
                 continue;
             }
+            if (isSulfuras(item)) {
+                continue;
+            }
             if (isNotMaxQuality(item)) {
                 increaseQuality(item);
                 descreaseSellIn(item);
