@@ -51,7 +51,7 @@ class GildedRose {
 
         private static void handleAgedBrie(Item item) {
             descreaseSellIn(item);
-            increaseQuality(item);
+            increaseQualityIfPossible(item);
         }
 
         private static void handleStandardItem(Item item) {

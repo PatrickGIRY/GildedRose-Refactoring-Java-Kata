@@ -47,4 +47,14 @@ public class GildedRoseTest {
         assertEquals(16, app.items[0].quality);
     }
 
+    @Test
+    public void should_keep_quality_below_fifty() {
+        Item[] items = new Item[] { new Item("Aged Brie", 42, 50) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals("Aged Brie", app.items[0].name);
+        assertEquals(41, app.items[0].sellIn);
+        assertEquals(50, app.items[0].quality);
+    }
+
 }
