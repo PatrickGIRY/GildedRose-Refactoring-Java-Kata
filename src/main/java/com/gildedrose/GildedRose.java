@@ -24,7 +24,7 @@ class GildedRose {
                 increaseQuality(item);
                 descreaseSellIn(item);
 
-                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (isBackstage(item)) {
                     if (item.sellIn < 11) {
                         increaseQualityIfPossible(item);
                     }
@@ -35,6 +35,10 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private boolean isBackstage(Item item) {
+        return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
 
     private void handleAgedBrie(Item item) {
@@ -56,7 +60,7 @@ class GildedRose {
 
     private boolean isStandardItem(Item item) {
         return !isAgedBrie(item)
-                && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")
+                && !isBackstage(item)
                 && !isSulfuras(item);
     }
 
