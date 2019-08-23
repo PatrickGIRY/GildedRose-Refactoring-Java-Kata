@@ -12,9 +12,7 @@ class GildedRose {
             if (!items[i].name.equals("Aged Brie")
                     && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                    if (isPositiveQuality(items[i])) {
-                        items[i].quality = items[i].quality - 1;
-                    }
+                    descreaseQualityIfPossible(items[i]);
                 }
             } else {
                 if (isNotMaxQuality(items[i])) {
