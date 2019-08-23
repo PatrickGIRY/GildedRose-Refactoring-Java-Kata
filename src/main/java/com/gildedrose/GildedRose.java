@@ -20,6 +20,10 @@ class GildedRose {
                 handleAgedBrie(item);
                 continue;
             }
+            if (isBackstage(item)) {
+                handleBackstage(item);
+                continue;
+            }
             if (isNotMaxQuality(item)) {
                 increaseQuality(item);
                 descreaseSellIn(item);
@@ -34,6 +38,18 @@ class GildedRose {
                     }
                 }
             }
+        }
+    }
+
+    private void handleBackstage(Item item) {
+        increaseQuality(item);
+        descreaseSellIn(item);
+        if (item.sellIn < 11) {
+            increaseQualityIfPossible(item);
+        }
+
+        if (item.sellIn < 6) {
+            increaseQualityIfPossible(item);
         }
     }
 
