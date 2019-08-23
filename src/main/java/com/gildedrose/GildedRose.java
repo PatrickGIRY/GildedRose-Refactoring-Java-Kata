@@ -21,6 +21,7 @@ class GildedRose {
         SULFURAS("Sulfuras, Hand of Ragnaros", item -> {}),
         AGED_BRIE("Aged Brie", ItemType::handleAgedBrie),
         BACKSTAGE("Backstage passes to a TAFKAL80ETC concert", ItemType::handleBackstage),
+        CONJURED("Conjured mana Cake", ItemType::handleConjured),
         STANDARD("", ItemType::handleStandardItem);
 
         private final String name;
@@ -35,6 +36,12 @@ class GildedRose {
             return Stream.of(values())
                     .filter(itemType -> itemType.name.equals(name))
                     .findFirst();
+        }
+
+        private static void handleConjured(Item item) {
+            descreaseQualityIfPossible(item);
+            descreaseQualityIfPossible(item);
+            descreaseSellIn(item);
         }
 
         private static void handleBackstage(Item item) {
