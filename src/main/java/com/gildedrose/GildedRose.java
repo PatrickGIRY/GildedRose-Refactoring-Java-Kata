@@ -9,10 +9,6 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (isStandardItem(item)) {
-                handleStandardItem(item);
-                continue;
-            }
             if (isSulfuras(item)) {
                 continue;
             }
@@ -24,6 +20,7 @@ class GildedRose {
                 handleBackstage(item);
                 continue;
             }
+            handleStandardItem(item);
         }
     }
 
