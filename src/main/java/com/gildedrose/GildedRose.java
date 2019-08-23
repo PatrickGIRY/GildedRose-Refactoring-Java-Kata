@@ -33,11 +33,7 @@ class GildedRose {
             }
 
             if (items[i].sellIn < 0) {
-                if (isStandardItem(items[i])) {
-                    handleStandardItem(items[i]);
-                } else {
-                    increaseQualityIfPossible(items[i]);
-                }
+                increaseQualityIfPossible(items[i]);
             }
         }
     }
