@@ -16,6 +16,10 @@ class GildedRose {
             if (isSulfuras(item)) {
                 continue;
             }
+            if (isAgedBrie(item)) {
+                handleAgedBrie(item);
+                continue;
+            }
             if (isNotMaxQuality(item)) {
                 increaseQuality(item);
                 descreaseSellIn(item);
@@ -31,6 +35,11 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private void handleAgedBrie(Item item) {
+        descreaseSellIn(item);
+        increaseQuality(item);
     }
 
     private void handleStandardItem(Item item) {
