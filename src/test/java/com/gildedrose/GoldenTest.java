@@ -11,6 +11,8 @@ import java.nio.file.Paths;
 
 public class GoldenTest {
 
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
+
     @Test
     public void check() throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -20,7 +22,7 @@ public class GoldenTest {
     }
 
     private String getGloden() throws IOException {
-        return String.join("\n", Files.readAllLines(Paths.get("golden.txt"))) + "\n";
+        return String.join(LINE_SEPARATOR, Files.readAllLines(Paths.get("golden.txt"))) + "\n";
     }
 
 }
