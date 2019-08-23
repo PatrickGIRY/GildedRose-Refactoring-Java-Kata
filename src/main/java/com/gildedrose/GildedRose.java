@@ -8,22 +8,22 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            if (isStandardItem(items[i])) {
-                handleStandardItem(items[i]);
+        for (Item item : items) {
+            if (isStandardItem(item)) {
+                handleStandardItem(item);
                 continue;
             }
-            if (isNotMaxQuality(items[i])) {
-                increaseQuality(items[i]);
-                descreaseSellIn(items[i]);
+            if (isNotMaxQuality(item)) {
+                increaseQuality(item);
+                descreaseSellIn(item);
 
-                if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (items[i].sellIn < 11) {
-                        increaseQualityIfPossible(items[i]);
+                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (item.sellIn < 11) {
+                        increaseQualityIfPossible(item);
                     }
 
-                    if (items[i].sellIn < 6) {
-                        increaseQualityIfPossible(items[i]);
+                    if (item.sellIn < 6) {
+                        increaseQualityIfPossible(item);
                     }
                 }
             }
