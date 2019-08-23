@@ -39,7 +39,6 @@ class GildedRose {
 
         private static void handleBackstage(Item item) {
             increaseQuality(item);
-            descreaseSellIn(item);
             if (item.sellIn < 11) {
                 increaseQualityIfPossible(item);
             }
@@ -47,6 +46,8 @@ class GildedRose {
             if (item.sellIn < 6) {
                 increaseQualityIfPossible(item);
             }
+
+            descreaseSellIn(item);
         }
 
         private static void handleAgedBrie(Item item) {
