@@ -24,20 +24,6 @@ class GildedRose {
                 handleBackstage(item);
                 continue;
             }
-            if (isNotMaxQuality(item)) {
-                increaseQuality(item);
-                descreaseSellIn(item);
-
-                if (isBackstage(item)) {
-                    if (item.sellIn < 11) {
-                        increaseQualityIfPossible(item);
-                    }
-
-                    if (item.sellIn < 6) {
-                        increaseQualityIfPossible(item);
-                    }
-                }
-            }
         }
     }
 
