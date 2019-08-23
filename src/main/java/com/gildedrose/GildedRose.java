@@ -10,7 +10,7 @@ class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             if (isStandardItem(items[i])) {
-                descreaseQualityIfPossible(items[i]);
+                handleStandardItem(items[i]);
             } else {
                 if (isNotMaxQuality(items[i])) {
                     increaseQuality(items[i]);
@@ -33,12 +33,16 @@ class GildedRose {
 
             if (items[i].sellIn < 0) {
                 if (isStandardItem(items[i])) {
-                    descreaseQualityIfPossible(items[i]);
+                    handleStandardItem(items[i]);
                 } else {
                     increaseQualityIfPossible(items[i]);
                 }
             }
         }
+    }
+
+    private void handleStandardItem(Item item) {
+        descreaseQualityIfPossible(item);
     }
 
     private void descreaseSellIn(Item item) {
