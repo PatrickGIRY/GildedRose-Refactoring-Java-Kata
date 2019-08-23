@@ -12,18 +12,17 @@ class GildedRose {
             if (isStandardItem(items[i])) {
                 handleStandardItem(items[i]);
                 continue;
-            } else {
-                if (isNotMaxQuality(items[i])) {
-                    increaseQuality(items[i]);
+            }
+            if (isNotMaxQuality(items[i])) {
+                increaseQuality(items[i]);
 
-                    if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].sellIn < 11) {
-                            increaseQualityIfPossible(items[i]);
-                        }
+                if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (items[i].sellIn < 11) {
+                        increaseQualityIfPossible(items[i]);
+                    }
 
-                        if (items[i].sellIn < 6) {
-                            increaseQualityIfPossible(items[i]);
-                        }
+                    if (items[i].sellIn < 6) {
+                        increaseQualityIfPossible(items[i]);
                     }
                 }
             }
