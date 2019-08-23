@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+
 class GildedRose {
     Item[] items;
 
@@ -9,18 +12,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (isSulfuras(item)) {
-                continue;
-            }
-            if (isAgedBrie(item)) {
-                handleAgedBrie(item);
-                continue;
-            }
-            if (isBackstage(item)) {
-                handleBackstage(item);
-                continue;
-            }
-            handleStandardItem(item);
+            ItemType.of(item.name).updateQuality(item);
         }
     }
 
@@ -34,10 +26,6 @@ class GildedRose {
         if (item.sellIn < 6) {
             increaseQualityIfPossible(item);
         }
-    }
-
-    private static boolean isBackstage(Item item) {
-        return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
 
     private static void handleAgedBrie(Item item) {
@@ -55,14 +43,6 @@ class GildedRose {
 
     private static void descreaseSellIn(Item item) {
         item.sellIn = item.sellIn - 1;
-    }
-
-    private static boolean isAgedBrie(Item item) {
-        return item.name.equals("Aged Brie");
-    }
-
-    private static boolean isSulfuras(Item item) {
-        return item.name.equals("Sulfuras, Hand of Ragnaros");
     }
 
     private static void increaseQualityIfPossible(Item item) {
@@ -87,5 +67,30 @@ class GildedRose {
 
     private static boolean isPositiveQuality(Item item) {
         return item.quality > 0;
+    }
+
+    private enum  ItemType {
+        SULFURAS("Sulfuras, Hand of Ragnaros", item -> {}),
+        AGED_BRIE("Aged Brie", GildedRose::handleAgedBrie),
+        BACKSTAGE("Backstage passes to a TAFKAL80ETC concert", GildedRose::handleBackstage),
+        STANDARD("", GildedRose::handleStandardItem);
+
+        private final String name;
+        private final Consumer<Item> updateQuality;
+
+        ItemType(String name, Consumer<Item> updateQuality) {
+            this.name = name;
+            this.updateQuality = updateQuality;
+        }
+
+        public static ItemType of(String name) {
+            return Stream.of(values())
+                    .filter(itemType -> itemType.name.equals(name))
+                    .findFirst().orElse(ItemType.STANDARD);
+        }
+
+        public void updateQuality(Item item) {
+            this.updateQuality.accept(item);
+        }
     }
 }
