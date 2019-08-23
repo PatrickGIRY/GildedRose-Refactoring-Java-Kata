@@ -36,4 +36,15 @@ public class GildedRoseTest {
         assertEquals(0, app.items[0].quality);
     }
 
+
+    @Test
+    public void should_increase_quality_when_product_is_aged_brie() {
+        Item[] items = new Item[] { new Item("Aged Brie", 42, 15) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals("Aged Brie", app.items[0].name);
+        assertEquals(41, app.items[0].sellIn);
+        assertEquals(16, app.items[0].quality);
+    }
+
 }
