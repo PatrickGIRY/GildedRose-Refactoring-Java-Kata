@@ -11,6 +11,7 @@ class GildedRose {
         for (int i = 0; i < items.length; i++) {
             if (isStandardItem(items[i])) {
                 handleStandardItem(items[i]);
+                continue;
             } else {
                 if (isNotMaxQuality(items[i])) {
                     increaseQuality(items[i]);
@@ -43,6 +44,7 @@ class GildedRose {
 
     private void handleStandardItem(Item item) {
         descreaseQualityIfPossible(item);
+        descreaseSellIn(item);
     }
 
     private void descreaseSellIn(Item item) {
