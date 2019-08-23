@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
@@ -12,7 +13,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            ItemType.of(item.name).updateQuality(item);
+            ItemType.of(item.name).orElse(ItemType.STANDARD).updateQuality(item);
         }
     }
 
@@ -30,10 +31,10 @@ class GildedRose {
             this.updateQuality = updateQuality;
         }
 
-        public static ItemType of(String name) {
+        public static Optional<ItemType> of(String name) {
             return Stream.of(values())
                     .filter(itemType -> itemType.name.equals(name))
-                    .findFirst().orElse(ItemType.STANDARD);
+                    .findFirst();
         }
 
         private static void handleBackstage(Item item) {
