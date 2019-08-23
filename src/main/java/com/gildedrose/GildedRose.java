@@ -46,9 +46,13 @@ class GildedRose {
     }
 
     private boolean isStandardItem(Item item) {
-        return !item.name.equals("Aged Brie")
+        return !isAgedBrie(item)
                 && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")
                 && !isSulfuras(item);
+    }
+
+    private boolean isAgedBrie(Item item) {
+        return item.name.equals("Aged Brie");
     }
 
     private boolean isSulfuras(Item item) {
