@@ -58,7 +58,7 @@ class GildedRose {
             descreaseQualityIfPossible(item);
             descreaseSellIn(item);
             if (item.sellIn < 0) {
-                increaseQualityIfPossible(item);
+                descreaseQualityIfPossible(item);
             }
         }
 
