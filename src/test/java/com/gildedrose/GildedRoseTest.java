@@ -97,4 +97,14 @@ public class GildedRoseTest {
         assertEquals(45, app.items[0].quality);
     }
 
+    @Test
+    public void should_have_0_quality_when_sellin_0_for_backstage() {
+        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 0, 0)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[0].name);
+        assertEquals(-1, app.items[0].sellIn);
+        assertEquals(0, app.items[0].quality);
+    }
+
 }

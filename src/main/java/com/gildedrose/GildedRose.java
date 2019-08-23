@@ -48,6 +48,9 @@ class GildedRose {
             }
 
             descreaseSellIn(item);
+            if (item.sellIn < 0) {
+                item.quality = 0;
+            }
         }
 
         private static void handleAgedBrie(Item item) {
