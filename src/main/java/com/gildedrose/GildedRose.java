@@ -24,7 +24,7 @@ class GildedRose {
         }
     }
 
-    private void handleBackstage(Item item) {
+    private static void handleBackstage(Item item) {
         increaseQuality(item);
         descreaseSellIn(item);
         if (item.sellIn < 11) {
@@ -36,16 +36,16 @@ class GildedRose {
         }
     }
 
-    private boolean isBackstage(Item item) {
+    private static boolean isBackstage(Item item) {
         return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
 
-    private void handleAgedBrie(Item item) {
+    private static void handleAgedBrie(Item item) {
         descreaseSellIn(item);
         increaseQuality(item);
     }
 
-    private void handleStandardItem(Item item) {
+    private static void handleStandardItem(Item item) {
         descreaseQualityIfPossible(item);
         descreaseSellIn(item);
         if (item.sellIn < 0) {
@@ -53,39 +53,39 @@ class GildedRose {
         }
     }
 
-    private void descreaseSellIn(Item item) {
+    private static void descreaseSellIn(Item item) {
         item.sellIn = item.sellIn - 1;
     }
 
-    private boolean isAgedBrie(Item item) {
+    private static boolean isAgedBrie(Item item) {
         return item.name.equals("Aged Brie");
     }
 
-    private boolean isSulfuras(Item item) {
+    private static boolean isSulfuras(Item item) {
         return item.name.equals("Sulfuras, Hand of Ragnaros");
     }
 
-    private void increaseQualityIfPossible(Item item) {
+    private static void increaseQualityIfPossible(Item item) {
         if (isNotMaxQuality(item)) {
             increaseQuality(item);
         }
     }
 
-    private void increaseQuality(Item item) {
+    private static void increaseQuality(Item item) {
         item.quality = item.quality + 1;
     }
 
-    private boolean isNotMaxQuality(Item item) {
+    private static boolean isNotMaxQuality(Item item) {
         return item.quality < 50;
     }
 
-    private void descreaseQualityIfPossible(Item item) {
+    private static void descreaseQualityIfPossible(Item item) {
         if (isPositiveQuality(item)) {
             item.quality--;
         }
     }
 
-    private boolean isPositiveQuality(Item item) {
+    private static boolean isPositiveQuality(Item item) {
         return item.quality > 0;
     }
 }
