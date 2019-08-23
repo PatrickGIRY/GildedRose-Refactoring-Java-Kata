@@ -57,12 +57,6 @@ class GildedRose {
         item.sellIn = item.sellIn - 1;
     }
 
-    private boolean isStandardItem(Item item) {
-        return !isAgedBrie(item)
-                && !isBackstage(item)
-                && !isSulfuras(item);
-    }
-
     private boolean isAgedBrie(Item item) {
         return item.name.equals("Aged Brie");
     }
